@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/RolasBD/notas/issues"
   },
-  "homepage": "https://github.com/RolasBD/notas#readme"
+  "homepage": "https://github.com/RolasBD/notas#readme",
+  "dependencies": {
+    "yargs": "^17.3.1"
+  }
 }
