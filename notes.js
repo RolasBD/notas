@@ -1,16 +1,14 @@
-console.log("Starting notes.js");
+const fs = require('fs');
 
-var add = (x,y) => {
-    return x+y;
+function addingNote (title, body){
+var note = {
+title,
+body
+};
+
+fs.writeFileSync("notes.txt", note)
 }
-
-//var sub = (x,y) => {
-//    return x-y;
-//}
 
 module.exports = {
-    add,
-    sub
+    addingNote
 }
-
-
