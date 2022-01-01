@@ -1,8 +1,8 @@
 
 const fs = require('fs');
-const { title } = require('process');
+//const { title } = require('process');
 
-var fetchNote = () => {
+var fetchNotes = () => {
     try{
         return JSON.parse(fs.readFileSync('note.txt'));
     }catch(err){
@@ -11,19 +11,19 @@ var fetchNote = () => {
 }
 
 var addingNote = (title, body) => {
-    var note = fetchNote ();
+    var notes = fetchNotes ();
+   
     var note = {
         title,
         body
     };
   
-    var double = note.filter((note) => note.title === title);
+    var double = notes.filter((note) => note.title === title);
 
     if(double.length === 0){
-        note.push(note);
+        notes.push(note);
 
-        fs.writeFileSync("note.txt", JSON.stringify(note));
-        
+        fs.writeFileSync("notes.txt", JSON.stringify(notes)); 
         logNote(note);
     }else{
         console.log("Para: Titulo existe")
@@ -31,22 +31,22 @@ var addingNote = (title, body) => {
 }
 
 var removeNote = (title) => {
-    var note = fetchNote ();
-    var filteredNote = note.filter((note) => {note.title !== title});
-    fs.writeFileSync("note.txt", JSON.stringify(filteredNote));
+    var notes = fetchNotes ();
+    var filteredNotes = notes.filter((note) => {note.title !== title});
+    fs.writeFileSync("note.txt", JSON.stringify(filteredNotes));
 
 }
 
 var readNote = (title) => {
-    var note = fetchNote ();
-    var filteredNote = note.filter((note) => {note.title !== title});
-    logNote (filteredNote[0]);
+    var notes = fetchNotes ();
+    var filteredNote = notes.filter((note) => {note.title !== title});
+    logNote (filteredNotes[0]);
 }
 
 var getAll = () => {
-    var note = fetchNote ();
+    var notes = fetchNotes ();
 
-note.foreach((note)=> logNote(note));
+notes.foreach((note)=> logNote(note));
 }
 
 var logNote = (note) => {

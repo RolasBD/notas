@@ -1,7 +1,7 @@
 console.log("Starting app.js");
 
 const yargs = require('yargs');
-const note = require('./note.js');
+const notes = require('./notes.js');
 const argv = yargs.argv;
 
 var title = yargs.argv.title;
@@ -10,16 +10,16 @@ var command = yargs.argv._[0];
 
 if (command === "add") {
     console.log("adding note");
-    note.addingNote(title, body);
+    notes.addingNote(title, body);
 }else if (command === "remove") {
     console.log("removing note");
-    note.removeNote(title);
+    notes.removeNote(title);
 }else if (command === "read") {
     console.log("reading note");
-    note.readNote(title);
+    notes.readNote(title);
 }else if (command === "list") {
     console.log("listing all notes");
-    note.getAll();
+    notes.getAll();
 }else{
     console.log("Unknown command");
 }
